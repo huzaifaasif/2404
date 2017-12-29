@@ -3,4 +3,4 @@
 - Specific relationship was establised between recordings, songs, tracks
 - Observer design pattern was used to meet the user's requirements and improve its scalability.
 
-![alt text](http://imgbox.com/S7TDWKqs)
+![UML Diagram](https://github.com/huzaifaasif/2404/blob/master/UML.png)
