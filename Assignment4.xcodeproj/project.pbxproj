@@ -18,6 +18,8 @@
 		6CC5B8DF1FC92763007409BC /* User.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5B8D11FC92763007409BC /* User.cpp */; };
 		6CC5B8E01FC92763007409BC /* Users.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5B8D31FC92763007409BC /* Users.cpp */; };
 		6CC5B8E21FC9286D007409BC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CC5B8E11FC9286D007409BC /* main.cpp */; };
+		6CF1B5D11FD1A59100E72F43 /* Subject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CF1B5CF1FD1A59100E72F43 /* Subject.cpp */; };
+		6CF1B5D41FD1A62200E72F43 /* Observer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6CF1B5D21FD1A62200E72F43 /* Observer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +60,10 @@
 		6CC5B8D31FC92763007409BC /* Users.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Users.cpp; sourceTree = "<group>"; };
 		6CC5B8D41FC92763007409BC /* Users.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Users.hpp; sourceTree = "<group>"; };
 		6CC5B8E11FC9286D007409BC /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		6CF1B5CF1FD1A59100E72F43 /* Subject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Subject.cpp; sourceTree = "<group>"; };
+		6CF1B5D01FD1A59100E72F43 /* Subject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Subject.hpp; sourceTree = "<group>"; };
+		6CF1B5D21FD1A62200E72F43 /* Observer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Observer.cpp; sourceTree = "<group>"; };
+		6CF1B5D31FD1A62200E72F43 /* Observer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Observer.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,9 @@
 				6CC5B8E11FC9286D007409BC /* main.cpp */,
 				6CC5B8B91FC92763007409BC /* genericClass.cpp */,
 				6CC5B8BA1FC92763007409BC /* genericClass.hpp */,
+				6CF1B5D61FD1A69200E72F43 /* Subject */,
+				6CF1B5D21FD1A62200E72F43 /* Observer.cpp */,
+				6CF1B5D31FD1A62200E72F43 /* Observer.hpp */,
 				6CC5B8EB1FC9318C007409BC /* Playlist */,
 				6CC5B8EA1FC93185007409BC /* Recording */,
 				6CC5B8E91FC9317F007409BC /* Recordings */,
@@ -190,6 +199,15 @@
 			name = Playlist;
 			sourceTree = "<group>";
 		};
+		6CF1B5D61FD1A69200E72F43 /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				6CF1B5CF1FD1A59100E72F43 /* Subject.cpp */,
+				6CF1B5D01FD1A59100E72F43 /* Subject.hpp */,
+			);
+			name = Subject;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,11 +265,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CF1B5D11FD1A59100E72F43 /* Subject.cpp in Sources */,
 				6CC5B8DF1FC92763007409BC /* User.cpp in Sources */,
 				6CC5B8DB1FC92763007409BC /* Song.cpp in Sources */,
 				6CC5B8E21FC9286D007409BC /* main.cpp in Sources */,
 				6CC5B8D51FC92763007409BC /* genericClass.cpp in Sources */,
 				6CC5B8DA1FC92763007409BC /* Recordings.cpp in Sources */,
+				6CF1B5D41FD1A62200E72F43 /* Observer.cpp in Sources */,
 				6CC5B8E01FC92763007409BC /* Users.cpp in Sources */,
 				6CC5B8D91FC92763007409BC /* Recording.cpp in Sources */,
 				6CC5B8D71FC92763007409BC /* Playlist.cpp in Sources */,
@@ -386,6 +406,7 @@
 				6CC5B8B61FC9261B007409BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

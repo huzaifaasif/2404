@@ -24,10 +24,10 @@ public:
     void setTrackCollection(Recording *recording);
     void getData(string &input);
 
-    class Track *getTrackAddress(int index);
+    class Track *getTrackAddress(int index) const;
     class Track getTrackInstance(int index);
     
-    size_t sizeOfTrackCollection();
+    size_t sizeOfTrackCollection() const;
     
     //getters
     int getAlbumID(int index);

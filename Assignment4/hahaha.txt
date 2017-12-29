@@ -1,1 +1,33 @@
-//haha
+add -u ajones "Anne Jones"
+add -u cindy "Cindy Reynolds"
+add -u fjones "Frank Jones"
+add -p ajones "favourites"
+add -p cindy "favourites"
+add -p fjones "favourites"
+
+add -r 100 "Please Please Me" "Beatles" "George Martin" 1963
+add -s 1011 "A Taste Of Honey" "Bobby Scott, Ric Marlow"
+add -s 1012 "There's A Place" "Paul McCartney, John Lennon"
+add -s 1013 "Twist and Shout" "Phil Medley, Bert Russell"
+add -s 1014 "It Won't Be Long" "Paul McCartney, John Lennon"
+add -s 1015 "All I've Got To Do" "Paul McCartney, John Lennon"
+add -s 1021 "Roll Over Beethoven" "Chuck Berry"
+
+//add -t track_id albumID songID track_number
+add -t 12 100 1011 12
+add -t 13 100 1012 13
+add -t 14 100 1013 14
+add -t 15 101 1014 1
+add -t 16 101 1015 2
+add -t 22 101 1021 8
+
+//add -l userid playlist_name, track_id
+add -l ajones "favourites" 12
+add -l cindy "favourites" 13
+add -l cindy "favourites" 14
+add -l cindy "favourites" 15
+follow -u ajones -p "favourites" -f cindy
+add -l cindy "favourites" 22
+add -l cindy "favourites" 16
+follow -u ajones -p "favourites" -f fjones
+follow -u ajones -p "favourites" -f stop

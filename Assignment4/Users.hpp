@@ -14,7 +14,7 @@
 #include "Users.hpp"
 #include "User.hpp"
 #include "Playlist.hpp"
-
+#include "Tracks.hpp"
 using namespace std;
 class Users{
 public:
@@ -30,9 +30,18 @@ public:
     void showUsersPlaylistCollection(class Playlist *playlist);
     
     size_t sizeOfUsersCollection();
-    string getUser_ID(int index);
     
+    //getters
+    string getUser_ID(int index);
     class User *getUserInstance(int index);
+    User *getUserObject(string user_name);
+    void initPlaylist(Playlist *aPlaylist);
+    void showPlaylistWithUsersCollection(Users *users);
+    
+    
+    void initTest(string user_id, string playlist, int track, const Tracks *tracks);
+    //--NEW
+    bool doesUserExist(string userid, int &index);
     
 private:
     vector<User*> users_collection;

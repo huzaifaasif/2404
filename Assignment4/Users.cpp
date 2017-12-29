@@ -20,11 +20,21 @@ Users::Users(){
 
 Users::~Users(){
     
-    for (auto *ptr: users_collection){
-        delete ptr;
+    for (int i=0; i<users_collection.size(); i++){
+        delete users_collection[i];
     }
     
     users_collection.clear();
+}
+
+bool Users::doesUserExist(string userid, int &index){
+    for (int i=0; i<users_collection.size(); i++){
+        if (userid == users_collection[i]->getUser_ID()){
+            index = i;
+            return true;
+        }
+    }
+    return false;
 }
 
 void Users::getData(string &input){
@@ -67,13 +77,54 @@ size_t Users::sizeOfUsersCollection(){
 //
 //    }
 //}
+
+
+
 string Users::getUser_ID(int index){
     return users_collection[index]->getUser_ID();
 }
+//adding tracks to users
+void Users::initTest(string user_id, string playlist, int track, const Tracks *tracks){
+    
+    for (int i=0; i<users_collection.size(); i++){
+        for (int j=0; j<tracks->sizeOfTrackCollection(); j++){
+            Track *track_instance = tracks->getTrackAddress(j);
+            if (track_instance->getTrackID() == track){
+                if (getUser_ID(i) == user_id){
+                    getUserInstance(i)->getPlaylistInstance(playlist)->setPlaylistToTrack(track_instance);
+                    cout <<user_id <<"'s playlist "<<playlist<<" now has track "<<track<<endl<<endl;
+                }
+            }
+        }
+    }
+    
+//    for (int i=0; i<tracks->sizeOfTrackCollection(); i++){
+ //       Track *track_instance = tracks->getTrackAddress(i);
+  //      if (track_instance->getTrackID() == track){
+   //         if (getUser_ID(i) == user_id){
+    //            getUserInstance(i)->getPlaylistInstance(playlist)->setPlaylistToTrack(track_instance);
+//                cout <<user_id <<"'s playlist "<<playlist<<" now has track "<<track<<endl<<endl;
+  //          }
+      //  }
+    //}
+}
 
+//by index
 User *Users::getUserInstance(int index){
     return users_collection[index];
 }
+// by string
+User *Users::getUserObject(string user_name){
+    for (int i=0; i<users_collection.size(); i++){
+        //if (user_name == users_collection[i]->getUser_ID()){
+        if (user_name == (users_collection[i]->getUser_ID())){
+            return users_collection[i];
+        }
+    }
+    return nullptr;
+}
+
+
 
 void Users::removeData(string input){
     

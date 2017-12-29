@@ -19,6 +19,7 @@ using namespace std;
 size_t genericClass::quit=0,
 genericClass::help_pos=0,
 genericClass::add_pos=0,
+genericClass::follow_pos=0,
 genericClass::delete_pos=0,
 genericClass::comment_position=0,
 
@@ -34,8 +35,7 @@ genericClass::stop = "stop";
 genericClass::genericClass(){}
 
 genericClass::~genericClass(){
-    
-    
+
 }
 
 void genericClass::parseIntFromString(string &str, int &id){
@@ -139,7 +139,6 @@ void genericClass::performOperation(string &input){
             tracks.tracksToRespectiveSongs(song_ptr, count);
             count++;
             
-    
             
         }
         
@@ -148,23 +147,50 @@ void genericClass::performOperation(string &input){
             users.getData(input);
             
         }
+        
         else if(keyword == "p"){
-            
-            
-            playlist.getData(input);
+    
+            playlist.getData(input, userID, playlist_name, trackID);
             playlist_ptr = &users;
-            playlist.usersToRespectivePlaylist(playlist_ptr,countForPlaylist);
+       
+          //adding playlist to user
+       playlist.usersToRespectivePlaylist(playlist_ptr,countForPlaylist);
             countForPlaylist++;
             
-            
         }
+        
         else if(keyword == "l"){
             
-            playlist.getData(input);
+            playlist.getData(input, userID, playlist_name, trackID);
             tracks_ptr = &tracks;
+            
+            //adding tracks to playlist
             playlist.playlistToRespectiveTrack(tracks_ptr, countForPlaylistToTrack);
+            
+            //adding tracks to specific playlist of a user
+            users.initTest(userID, playlist_name, trackID,  tracks_ptr);
+            if (isFollowing){
+                attachPlaylist(input, false);
+            }
+            
             countForPlaylistToTrack++;
             
+        // if the new track has subject's userid
+            if (subject!=NULL && subject->getUserID() == playlist.userID()){
+                //get user
+                //User cind = *users.getUserObject(subject->getUserID());
+                //subjectPlaylist = *users.getUserObject(subject->getUserID())->getPlaylistInstance(subject->getPlaylistNameForUser()); //cindy
+                
+                //get playlist collection of user
+                
+                
+                //notify observers of the change
+             //   subject->initTracks(playlist, tracks, subject, countForSubject, true, true);
+                
+                //countForSubject++;
+               // observer->initTracks(playlist, tracks, observer);
+          //      subject->notify();
+            }
         }
         
     }
@@ -209,6 +235,7 @@ void genericClass::performOperation(string &input){
             playlist.removeData(input, playlist_ptr);
         }
         
+        //----->>DELETE TRACK FROM PLAYLIST (CHANGE)
         else if (keyword == "l"){
             playlist.removeData(input, playlist_ptr);
         }
@@ -238,14 +265,95 @@ void genericClass::performOperation(string &input){
             users.showUserCollection(playlist_ptr);
         }
         
+        else if (keyword == "p"){
+            playlist.showPlaylistwithUsersCollection(playlist_ptr);
+            
+        }
+        
         else if(keyword == "c"){        //user's playlist collection
             playlistPointer = &playlist;
             users.showUsersPlaylistCollection(playlistPointer);
             //countForShowUserPlaylist++;
         }
     }
-    
+    //
+    //---------*******FOLLOW --------
+    //follow -u userid -p playlist_name -f userid2
+    //follow -u ajones -p "favourites" -f cindy
+    else if (operation == "follow"){
+        attachPlaylist(input, true);
+        isFollowing = true;
+    }
 }
+
+void genericClass::attachPlaylist(string input, bool newFollower){
+    string observer_userid, subject_userid,playlist_name;
+    int index;
+    
+    
+    
+    
+    
+//    if (users.doesUserExist(observer_userid, index) && users.doesUserExist(subject_userid, index)){
+//
+//        if (newFollower){
+//            if (playlistPointer->getFollowersData(input, observer_userid,  subject_userid, playlist_name)){
+//
+//                subject = (users.getUserObject(subject_userid)->getPlaylistInstance(playlist_name));
+//
+//                observer = (users.getUserObject(observer_userid)->getPlaylistInstance(playlist_name));
+//
+//                //if playlist doesn't match with that of the subject
+//                if (subject == NULL || observer == NULL){
+//                    cout <<"ERROR! Playlists should be same in order to follow"<<endl<<endl;
+//                    return;
+//                }
+//                subject->attach(*observer);
+//            }
+//
+//        }
+//        subject->notify();
+//
+//    }
+//    else{
+//        cout <<"Mentioned user(s) don't exist!"<<endl<<endl;
+//    }
+    
+    
+    if (newFollower){
+        
+        //parsing & making sure all required parameters are provided
+        if (playlistPointer->getFollowersData(input, observer_userid,  subject_userid, playlist_name)){
+
+            //ensuring users exist
+            if (users.doesUserExist(observer_userid, index) && users.doesUserExist(subject_userid, index)){
+                
+                subject = (users.getUserObject(subject_userid)->getPlaylistInstance(playlist_name));
+
+                observer = (users.getUserObject(observer_userid)->getPlaylistInstance(playlist_name));
+
+                //if playlist doesn't match with that of the subject
+                if (subject->playlistName() != observer->playlistName()){
+                    cout <<"ERROR! Playlists should be same in order to follow"<<endl<<endl;
+                    return;
+                }
+
+                subject->attach(*observer);
+            }
+            subject->notify();
+
+        }
+        else{
+                cout <<"Mentioned user(s) don't exist!"<<endl<<endl;
+        }
+
+    }
+    else{
+        subject->notify();
+    }
+}
+
+
 //--------LOGGING---------
 
 bool genericClass::logErrorCheck(string input, size_t log_pos){
@@ -368,6 +476,7 @@ bool genericClass::errorCheck(string &input, size_t &log_pos){
     quit = input.find(".quit");
     help_pos = input.find(".help");
     add_pos = input.find("add");
+    follow_pos = input.find("follow");
     comment_position = input.find("//");
     
     delete_pos = input.find("delete");
@@ -376,7 +485,7 @@ bool genericClass::errorCheck(string &input, size_t &log_pos){
 
     log_pos = input.find(".log");
     
-    if (add_pos!=string::npos || show_pos!=string::npos || delete_pos!=string::npos || read_pos!=string::npos || help_pos!=string::npos || quit!=string::npos || log_pos!=string::npos || comment_position!=string::npos){
+    if (add_pos!=string::npos || show_pos!=string::npos || delete_pos!=string::npos || read_pos!=string::npos || help_pos!=string::npos || quit!=string::npos || log_pos!=string::npos || comment_position!=string::npos || follow_pos!=string::npos){
             return true;
     }
     

@@ -45,6 +45,7 @@ public:
     size_t getTrackToSongCollectionSize() const;
 
     
+    
 private:
     int track_id, albumID, songID, track_number;
     

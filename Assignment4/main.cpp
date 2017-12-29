@@ -12,10 +12,19 @@
 #include "genericClass.hpp"
 #include <string>
 #include <algorithm>
-
+#include "Subject.hpp"
+#include "Observer.hpp"
+#include "Playlist.hpp"
 using namespace std;
 
+
 int main() {
+    
+//    Subject product;
+//    Observer obs;
+//    
+//    product.attach(obs);
+//    product.notify();
     
     string input;
     int logCount=0;
@@ -28,7 +37,7 @@ int main() {
     string helpFile = "helpfile.txt";
     string scriptFile = "scriptfile.txt";
     string scriptFile_two="scriptFile2.txt";
-    string shush = "hahaha.txt";
+    string scriptFile_three = "hahaha.txt";
     size_t log_pos;
     
     for (;;){
@@ -56,8 +65,9 @@ int main() {
                 general_instance.readFile(scriptFile);
             }
             else if(input == ".read2"){
-                general_instance.readFile(scriptFile_two);
+                general_instance.readFile(scriptFile_three);
             }
+           
             else if (log_pos!=string::npos){    //logging
                 
                 general_instance.logCommands(input, logCount);

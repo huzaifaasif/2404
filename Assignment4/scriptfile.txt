@@ -385,25 +385,27 @@ add -u sjones "Susan Jones"
 add -u fjones "Frank Jones"
 add -u ajones "Anne Jones"
 add -u cindy "Cindy Reynolds"
+follow -u ajones -p "favourites" -f cindy
+
 //add playlists
 //add -p user_id playlist_name
-add -p gjones "mysongs"
+add -p gjones "driving"
+add -p sjones "favourites"
 add -p fjones "favourites"
-add -p fjones "mysongs"
-add -p ajones "morning songs"
+add -p sjones "mysongs"
 add -p ajones "evening songs"
-add -p ajones "driving"
+add -p ajones “driving”	//danger
 add -p ajones "favourites"
-add -p cindy "help"
-add -p cindy "songs"
+add -p cindy "favourites"
+add -p cindy "driving"
 //add playlist tracks
 //add -l userid playlist_name, track_id
 add -l gjones "mysongs" 1
-add -l gjones "mysongs" 6
-add -l ajones "driving" 11
+add -l gjones "mysongs" 3
+add -l ajones "driving" 4
 add -l ajones "favourites" 11
-add -l cindy "songs" 11
-add -l fjones "favourites" 11
+add -l cindy "favourites" 12
+add -l ajones "favourites" 11
 add -l cindy "songs" 13
 add -l fjones "favourites" 13
 add -l fjones "favourites" 14

@@ -17,7 +17,7 @@
 #include "Tracks.hpp"
 #include "Users.hpp"
 #include "Playlist.hpp"
-
+#include <vector>
 using namespace std;
 
 class genericClass{
@@ -42,9 +42,13 @@ public:
     static bool comments(string input);
     bool commentCheck(string input);
     
+    void attachPlaylist(string input, bool newFollower);
 private:
-    static size_t add_pos, delete_pos, help_pos, show_pos, read_pos, command, log_pos, quit;
+    static size_t add_pos, delete_pos, follow_pos, help_pos, show_pos, read_pos, command, log_pos, quit;
+    string userID, playlist_name;
+    int trackID;
     
+    bool isFollowing = false;
     //songs
     Songs songs; //instantiating Songs object
     Recordings recordings;
@@ -59,16 +63,19 @@ private:
     Tracks tracks;
     
     Playlist playlist;
+    Playlist subjectPlaylist;
     
     Users * playlist_ptr;
     Playlist * playlistPointer;
     
-    
+    Playlist *subject, *observer;
+    vector<Playlist>playlistSubCollection;
     
     int countForTracks=0;
     int count=0;
-    
+    int countForSubject=0;
     int countForPlaylist=0;
+    int countForObserver=0;
     int countForPlaylistToTrack=0;
     
     //logging

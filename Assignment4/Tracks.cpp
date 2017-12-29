@@ -80,7 +80,7 @@ void Tracks::getData(string &input){
 }
 
 //getter
-Track *Tracks::getTrackAddress(int index){
+ Track *Tracks::getTrackAddress(int index) const{
     return tracks_collection[index];  //dereference the pointer=track instance
 }
 
@@ -89,7 +89,7 @@ int Tracks::getAlbumID(int index){
 }
 
 
-size_t Tracks::sizeOfTrackCollection(){
+size_t Tracks::sizeOfTrackCollection() const{
     return tracks_collection.size();
 }
 
@@ -184,6 +184,8 @@ Track Tracks::getTrackInstance(int index){
     return *tracks_collection[index];
 }
 
+
+
 void Tracks::tracksToRespectiveSongs(Songs *songs, int count){
     
     
@@ -194,7 +196,7 @@ void Tracks::tracksToRespectiveSongs(Songs *songs, int count){
            // tracks_collection[i]->setSongPtr(songs->getSongInstance(i));
             tracks_collection[i]->setTrackToSongCollection(songs->getSongInstance(i));
             
-            cout <<"Song "<<songs->getSongInstance(i)->getTitle()<<" is added to Track with track ID "<<tracks_collection[i]->getTrackID()<<endl<<endl;
+            cout <<"Song \""<<songs->getSongInstance(i)->getTitle()<<"\" is added to Track with track ID "<<tracks_collection[i]->getTrackID()<<endl<<endl;
            // break;
             
         }

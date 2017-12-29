@@ -26,22 +26,28 @@ public:
     
     string getUser_ID();
     size_t sizeOfPlaylistPtrCollection();
+    
     //User *getUserInstance();
+    
     
     //void setPlaylistPtr(class Playlist *playlistPtr);
     
     void addPlaylistPtr(class Playlist *Playlist);
     
     class Playlist *getPlaylistPointer(int index);
-    void clearPointer(int i);
+    Playlist *getPlaylistInstance(string playlist_name);
     
+    //init playlist_with_track_id
+    void initPlaylist(Playlist *aPlaylist);
+    
+    void clearPointer(int i);
+    void showObserverCollection(string user_name);
 private:
     string userid, name;
     int track_id;
     
     
     //class Playlist *ptr_playlist;
-    
     vector<Playlist*> playlistPtrCollection;
     
 };
