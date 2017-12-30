@@ -14,7 +14,7 @@ To execute the provided script file (`scriptfile.txt`), type `.read`
 ## Commands
 This app allows users to `add`, `delete` and `show` the mentioned features in the table below. In addition to those, the program also supports logging of the commands using `.log` command.
 
-|Features|Commands|
+|Features|Keywords|
 |---|---|
 |User|`-u` |
 |Recording|`-r`|
