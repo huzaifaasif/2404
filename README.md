@@ -2,7 +2,7 @@
 - Allows users to create playlist, add and remove songs, recordings, tracks.
 - Specific relationship was establised between recordings, songs, tracks, as shown in the UML diagram.
 - The commands should allow establishing all the relationships that exist in the data model. For example: associating songs with recordings, or playlists with users, or songs with user playlists.
-- Observer design pattern was used to meet user's requirements and improve its scalability.
+- Allows the users to follow other user's playlists as long as their playlists have same name, for which observer design pattern was used. 
 
 ![UML Diagram](https://github.com/huzaifaasif/2404/blob/master/UML.png)
 ## Compiling Instructions using terminal
@@ -24,5 +24,3 @@ This app allows users to `add`, `delete` and `show` the mentioned features in th
 For example, adding a user follows the syntax: `add -u user_id "name"`
 
 To see the rest of the available commands supported by the program, type `.help`
-
-
