@@ -1,4 +1,4 @@
-THIS IS THE READ FILE FOR ASSIGNMENT 2 FOR COMP2404
+
 ——————————————————————————
 
 Compiling Instructions:
