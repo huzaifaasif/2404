@@ -1,10 +1,5 @@
 THIS IS THE READ FILE FOR ASSIGNMENT 2 FOR COMP2404
 ——————————————————————————
-Submitted by:
-
-Huzaifa Asif - 100921147
-Ali Selcuk - 100954050
-——————————————————————————
 
 Compiling Instructions:
 
