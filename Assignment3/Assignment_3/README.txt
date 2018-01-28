@@ -12,7 +12,4 @@ To disable this behaviour comment out the lines:
 
 in the run() method at the start of the UI.cpp file.
 
-Please report bugs to me so I can fix them.
-Lou Nel
-ldnel@scs.carleton.ca
 
